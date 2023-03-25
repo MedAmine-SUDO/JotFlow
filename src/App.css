@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.textarea-container {
+  width: 400px;
+}
+
+.textarea-container textarea {
+  width: 100%;
+  min-height: 50px;
+  max-height: 150px;
+  resize: vertical;
+}
+
+.list-container {
+  width: 400px;
+}
