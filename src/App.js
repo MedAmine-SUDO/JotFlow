@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Tab, Tabs, ListGroup, InputGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Note from "./Note";
 
 function App() {
   const [activeKey, setActiveKey] = useState("notes");
@@ -21,7 +22,7 @@ function App() {
     ) {
       event.preventDefault();
       if (activeKey === "notes") {
-        setNotes([...notes, inputValue]);
+        setNotes([...notes, { text: inputValue, id: Date.now() }]);
       } else {
         setTodo([...todo, { text: inputValue, completed: false }]);
       }
@@ -35,6 +36,18 @@ function App() {
     setTodo(newTodo);
   };
 
+  const handleDeleteNote = (noteId) => {
+    setNotes(notes.filter((note) => note.id !== noteId));
+  };
+
+  const handleNoteChange = (noteId, newContent) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === noteId ? { ...note, content: newContent } : note
+      )
+    );
+  };
+
   return (
     <div className="App">
       <Tabs
@@ -46,8 +59,15 @@ function App() {
         <Tab eventKey="notes" title="Notes">
           <div className="list-container">
             <ListGroup>
-              {notes.map((note, index) => (
-                <ListGroup.Item key={index}>{note}</ListGroup.Item>
+              {notes.map((note) => (
+                <Note
+                  key={note.id}
+                  content={note.text}
+                  onDeleteNote={() => handleDeleteNote(note.id)}
+                  onContentChange={(newContent) =>
+                    handleNoteChange(note.id, newContent)
+                  }
+                />
               ))}
             </ListGroup>
           </div>
