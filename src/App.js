@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tab, Tabs, ListGroup, InputGroup, Button } from "react-bootstrap";
+import { Tab, Tabs, ListGroup, InputGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Note from "./Note";
