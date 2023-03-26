@@ -39,6 +39,7 @@
 
 .textarea-container {
   width: 400px;
+  margin-left: 10px;
 }
 
 .textarea-container textarea {
@@ -50,6 +51,7 @@
 
 .list-container {
   width: 400px;
+  margin-left: 10px;
 }
 
 .note-container {
@@ -75,4 +77,8 @@
 
 .note-edit-button:hover {
   background-color: #0069d9;
+}
+
+.note-delete {
+  padding-left: 10%;
 }
